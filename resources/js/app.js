@@ -1,5 +1,6 @@
 import './bootstrap';
 import { createApp } from "vue"
+import Course from "./components/Course/Course.vue"
 
 const h1 = document.querySelector("#text-auto-typing span");
 
@@ -56,6 +57,7 @@ const app = createApp({
 
     }
 })
+app.component("course", Course)
 app.mount("#app")
 
 

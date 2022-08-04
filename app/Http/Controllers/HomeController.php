@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\Course;
 
 class HomeController extends Controller
 {
@@ -12,6 +13,7 @@ class HomeController extends Controller
      */
     public function index(): Response
     {
-        return response()->view("home.index");
+        $courses = Course::inRandomOrder()->take(6)->get();
+        return response()->view("home.index",compact("courses"));
     }
 }

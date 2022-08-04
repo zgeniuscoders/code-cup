@@ -7,5 +7,7 @@
 @section('content')
     <main class="mt-8">
         @include("partials.courses")
+
+        {{ $courses->Links() }}
     </main>
 @endsection
