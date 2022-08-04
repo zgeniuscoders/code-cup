@@ -4,64 +4,59 @@
       <aside class="shadow">
         <ul class="p-4">
           <li
-            class="
-              border-gray-500 border-solid border-2
-              p-2
-              rounded
-              my-2   
-            "
-            :class="index === episode.id ? 'bg-blue-900' : '' "
-            v-for="(episode,i) in course.episodes" :key="episode.id"
+            class="border-gray-500 border-solid border-2 p-2 rounded my-2 flex justify-between items-center gap-8"
+            :class="index === episode.id ? 'bg-blue-900' : ''"
+            v-for="(episode, i) in course.episodes"
+            :key="episode.id"
           >
             <a href="" @click.prevent="switchEpisode(i)">{{ episode.title }}</a>
+        <progress-button :episode-id="episode.id" :watched-episode="watched"/>
+
           </li>
         </ul>
       </aside>
 
-      <main class="p-4">
-        <h1 class="text-4xl pb-5" v-text="course.episodes"></h1>
-        <!-- <p class="my-4">{{ course.description }}</p> -->
+      <main class="py-4 px-8">
+        <h1 class="text-4xl pb-2">
+          {{ course.title }}
+        </h1>
+        <div class="py-4">
+          <progress-bar :watched-episodes="watched" :episodes="course.episodes"/>
+        </div>
+        <h2 class="text-3xl py-2">{{ course.episodes[index].title }}</h2>
+        <p class="my-4">{{ course.episodes[index].content }}</p>
 
-        <a
-          href=""
-          class="
-            bg-blue-700
-            text-white
-            hover:bg-blue-800
-            py-2
-            px-4
-            rounded
-            mt-4
-            inline-block
-          "
-          @click.prevent="show">Les conditions</a
-        >
       </main>
     </div>
   </div>
 </template>
 
-<script setup>
+<script>
+import ProgressButton from "./ProgressButton"
+import ProgressBar from "./ProgressBar"
 
-    import useCourse from "../../api/Course/index";
-    import axios from "axios";
-    import {onMounted,ref} from "vue"
+export default {
+  props: ["course","watched"],
 
+  components:{
+    ProgressButton,
+    ProgressBar
+  },
 
-    const {course,getCourse} = useCourse()
+  data() {
+    return {
+      index: 0,
+    };
+  },
 
-    const index = ref(0)
+  methods: {
+    switchEpisode(id) {
+      this.index = id;
+    },
 
-    onMounted(function() {
-        getCourse(25)
-    })
-
-    const show = () => {
-        console.log(course);
-    }
-
-    const switchEpisode = (id) => {
-      index.value = id
-    }
-
+    show() {
+      console.log(this.course);
+    },
+  },
+};
 </script>

@@ -37,10 +37,10 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $course = Course::where("id",$id)->with("episodes")->get();
+        $course = Course::where("id",$id)->with("episodes")->first();
         
         return response()->json([
-            'data' => $course
+            'course' => $course
         ]);
     }
 

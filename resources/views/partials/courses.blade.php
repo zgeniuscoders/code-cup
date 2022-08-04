@@ -17,7 +17,7 @@
                 <div class="flex justify-between align-center my-3">
                     <a href=""
                         class="bg-green-500 text-white rounded py-1 px-3 text-sm hover:cursor-pointer">Débutant</a>
-                    <small class="text-gray-400">15 jours</small>
+                    <small class="text-gray-400">{{ $course->participants }} participant @if(strlen($course->participants > 1)) s @endif</small>
                 </div>
                 <p class="text-gray-700 dark:text-gray-400 break-words mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Vero labore officiis

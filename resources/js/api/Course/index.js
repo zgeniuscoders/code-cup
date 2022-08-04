@@ -7,7 +7,7 @@ export default function useCourse() {
 
     const getCourse = async (id) => {
         let res = await axios.get(`/api/cours/${id}`)
-        course.value = res.data.data
+        course.value = res.data.course
     }
 
     return {

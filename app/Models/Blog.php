@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Blog extends Model
 {
     use HasFactory;
 
-    public function episodes()
+    public function getExerpt()
     {
-        return $this->hasMany(Episode::class);
+        return substr($this->content,0,200) . '...';
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/",[HomeController::class,'index'])->name("home");
+Route::post("/toggle-progress",[CourseController::class,'toggle']);
 Route::resource("/cours", CourseController::class);
 Route::resource("/blog",BlogController::class);

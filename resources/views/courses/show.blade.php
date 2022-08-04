@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <course  />
+    <course  :course="{{ $course }}" :watched="{{ $watched }}"/>
 @endsection

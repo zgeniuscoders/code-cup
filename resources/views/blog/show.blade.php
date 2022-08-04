@@ -1,18 +1,18 @@
 @extends('layouts.layout')
 
 @section('title')
-    Blog
+    {{ $post->title }}
 @endsection
 
 @section('content')
     <div class="container mx-auto md:px-80 px-10 py-28">
         <article class="grid justify-center items-center">
             <div>
-                <h3 class="text-3xl my-4">Lorem ipsum dolor sit amet.</h3>
+                <h3 class="text-3xl my-4">{{ $post->title }}</h3>
                 <div class="flex justify-between align-center my-3">
-                    <a href="" class="bg-gray-500 text-white rounded py-1 px-3 text-sm hover:cursor-pointer">zgenius
-                        matondo</a>
-                    <small class="text-gray-400">Le 20/03/2022</small>
+                    <a href="{{ $post->user->id }}"
+                        class="bg-gray-500 text-white rounded py-1 px-3 text-sm hover:cursor-pointer">{{ $post->user->name }}</a>
+                    <small class="text-gray-400">Le {{ $post->created_at->format('d/m/Y') }}</small>
                 </div>
                 <img src="{{ asset('img/11.png') }}" alt="">
             </div>
