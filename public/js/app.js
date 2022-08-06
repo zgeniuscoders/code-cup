@@ -19907,8 +19907,26 @@ __webpack_require__.r(__webpack_exports__);
     switchEpisode: function switchEpisode(id) {
       this.index = id;
     },
-    show: function show() {
-      console.log(this.course);
+    next: function next() {
+      this.index++;
+      localStorage.setItem("courseIndex", JSON.stringify({
+        index: this.index,
+        courseId: this.course.id
+      }));
+    },
+    privious: function privious() {
+      this.index--;
+      localStorage.setItem("courseIndex", JSON.stringify({
+        index: this.index,
+        courseId: this.course.id
+      }));
+    }
+  },
+  mounted: function mounted() {
+    var items = localStorage.getItem("courseIndex") ? JSON.parse(localStorage.getItem("courseIndex")) : "";
+
+    if (items.courseId === this.course.id) {
+      this.index = items.index;
     }
   }
 });
@@ -20051,6 +20069,9 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "my-4"
 };
+var _hoisted_11 = {
+  "class": "flex justify-between items-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_progress_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("progress-button");
 
@@ -20058,7 +20079,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.course.episodes, function (episode, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-gray-500 border-solid border-2 p-2 rounded my-2 flex justify-between items-center gap-8", $data.index === episode.id ? 'bg-blue-900' : '']),
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["border-gray-500 border-solid border-2 p-2 rounded my-2 flex justify-between items-center gap-4", $data.index === episode.id ? 'bg-blue-900' : '']),
       key: episode.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "",
@@ -20088,7 +20109,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.course.episodes[$data.index].content), 1
   /* TEXT */
-  )])])]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [$data.index > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.privious && $options.privious.apply($options, arguments);
+    }),
+    type: "button",
+    "class": "text-white py-2 px-4 rounded mt-4 inline-block bg-blue-800 active:outline active:outline-3 active:outline-blue-900"
+  }, " Precedent ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.index < $props.course.episodes.length - 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 1,
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.next && $options.next.apply($options, arguments);
+    }),
+    type: "button",
+    "class": "text-white py-2 px-4 rounded mt-4 inline-block bg-blue-800 active:outline active:outline-3 active:outline-blue-900"
+  }, " Suivant ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]);
 }
 
 /***/ }),

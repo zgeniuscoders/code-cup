@@ -8,18 +8,8 @@
     <main>
         @include('partials.banner')
 
-        {{-- blog --}}
-        <section class="dark:bg-gray-900 py-16 container mx-auto md:px-40 px-40">
-
-            <div class="text-center mb-4 block">
-                <h3 class="text-4xl text-blue-700">Blog</h3>
-                <p class="text-2xl text-gray-700 dark:text-gray-300">Venez découvrir les actualités autour de l'univers <br> du développement
-                    web.
-                </p>
-            </div>
-
-            @include('partials.blog')
-        </section>
+        {{-- courses --}}
+        @include('partials.courses')
 
         {{-- accordion --}}
         <div class="container md:px-40 px-10 mx-auto">
@@ -78,7 +68,19 @@
 
         </div>
 
-        {{-- courses --}}
-        @include('partials.courses')
+        {{-- blog --}}
+        <section class="dark:bg-gray-900 py-16 container mx-auto md:px-40 px-40">
+
+            <div class="text-center mb-4 block">
+                <h3 class="text-4xl text-blue-700">Blog</h3>
+                <p class="text-2xl text-gray-700 dark:text-gray-300">Venez découvrir les actualités autour de l'univers <br>
+                    du développement
+                    web.
+                </p>
+            </div>
+
+            @include('partials.blog')
+        </section>
     </main>
+    
 @endsection
